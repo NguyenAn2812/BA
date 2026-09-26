@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#eef3ff" />
   <title>TDTU Quiz Studio</title>
   <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
     :root {
       --bg: #eef3ff;
       --bg-2: #f8faff;
@@ -287,7 +288,7 @@
     .stat .value { font-size:27px; font-weight:850; letter-spacing:-.03em; }
     .stat .label { margin-top:5px; color:var(--muted); font-size:12px; }
 
-    .mode-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .mode-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
     .mode-card {
       position:relative;
       padding: 26px;
@@ -301,11 +302,13 @@
     }
     .mode-card:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(47,65,108,.15); }
     .mode-card.practice::before,
-    .mode-card.exam::before {
+    .mode-card.exam::before,
+    .mode-card.room::before {
       content:""; position:absolute; right:-50px; top:-50px; width:180px; height:180px; border-radius:50%; opacity:.22;
     }
     .mode-card.practice::before { background:#4f8dff; }
     .mode-card.exam::before { background:#8a63ff; }
+    .mode-card.room::before { background:#d5222a; }
     .mode-chip { width:48px; height:48px; border-radius:16px; display:grid; place-items:center; font-size:21px; background:rgba(255,255,255,.82); box-shadow:0 10px 24px rgba(70,80,120,.10); }
     .mode-card h3 { margin:18px 0 8px; font-size:23px; letter-spacing:-.02em; }
     .mode-card p { color:var(--muted); line-height:1.6; margin:0; max-width:520px; }
@@ -480,12 +483,104 @@
 
     .mobile-menu { display:none; }
 
+    /* Pixel-matched TDTU / Moodle room */
+    .sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+    .room-screen { position:fixed; inset:0; z-index:160; overflow:auto; color:#373a3c; background:#eef5f9; font:400 15px/1.5 Poppins,sans-serif; animation:none; -webkit-font-smoothing:antialiased; }
+    .room-screen.active { display:block; }
+    .room-navbar { height:70px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:#fff; box-shadow:0 0 20px rgba(0,0,0,.10); position:sticky; top:0; z-index:20; }
+    .room-brand-wrap,.room-user { display:flex; align-items:center; }
+    .room-brand-wrap { gap:10px; min-width:0; }
+    .room-hamburger { width:70px; height:70px; margin-left:-16px; display:grid; place-items:center; border:0; border-radius:0; background:#fff; color:#263238; cursor:pointer; }
+    .room-hamburger svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; }
+    .room-logo-image { width:370px; max-width:42vw; height:auto; max-height:67px; object-fit:contain; object-position:left center; display:block; }
+    .room-user { gap:18px; color:#1177d1; }
+    .room-user-name { color:#0073d1; font-size:15px; white-space:nowrap; }
+    .room-top-icon { width:28px; height:28px; display:grid; place-items:center; color:#0878d1; }
+    .room-top-icon svg { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .room-top-icon.chat svg { fill:#0878d1; stroke:#0878d1; }
+    .room-avatar { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; overflow:hidden; background:#eef0f2; color:#d8dadd; }
+    .room-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+    .room-exit { width:18px; border:0; background:transparent; color:#0878d1; padding:0; cursor:pointer; font-size:17px; line-height:1; }
+    .room-icon-rail { position:fixed; left:0; top:70px; bottom:0; width:70px; z-index:19; background:#fff; border-right:1px solid #dfe7eb; display:flex; flex-direction:column; align-items:center; padding-top:7px; color:#173040; }
+    .room-icon-rail span { width:100%; min-height:50px; display:grid; place-items:center; border-left:4px solid transparent; }
+    .room-icon-rail svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+    .room-icon-rail span.active { border-left-color:#222; border-bottom:1px solid #d9dfe3; }
+    .room-icon-rail .room-rail-bottom { position:absolute; bottom:0; left:0; }
+    .room-content-offset { margin-left:70px; min-height:calc(100vh - 70px); }
+    .room-course-card { margin:17px 16px 0; padding:20px; background:#fff; border:1px solid #ccd8de; }
+    .room-course-card h1 { margin:0 0 7px; color:#455a64; font-size:38px; line-height:1.22; font-weight:300; }
+    .room-course-card p { margin:0 0 7px; color:red; font-size:15px; }
+    .room-crumbs { display:flex; align-items:center; overflow:auto; white-space:nowrap; }
+    .room-crumbs span { position:relative; padding:6px 19px; background:#eef5f9; color:#284656; font-size:12px; }
+    .room-crumbs span:first-child { padding-left:18px; }
+    .room-crumbs span + span { margin-left:3px; }
+    .room-crumbs span:not(:last-child)::after { content:""; position:absolute; top:0; right:-12px; z-index:2; width:0; height:0; border-top:15px solid transparent; border-bottom:15px solid transparent; border-left:12px solid #eef5f9; }
+    .room-page-wrap { margin:0; padding:16px 16px 0; }
+    .room-layout { display:grid; grid-template-columns:minmax(0,1fr) 414px; gap:30px; align-items:start; }
+    .room-quiz-column { min-width:0; background:#fff; border:1px solid #ccd8de; }
+    .room-main-title { display:none; }
+    .room-questions { display:grid; gap:26px; padding:20px 20px 0; }
+    .room-question { display:grid; grid-template-columns:105px minmax(0,1fr); gap:23px; align-items:stretch; }
+    .room-q-info { background:#dee2e6; border:1px solid #cad0d7; padding:.5em; min-height:136px; font-size:12px; line-height:1.45; }
+    .room-q-info h3 { margin:0 0 .45em; font-size:15px; font-weight:500; }
+    .room-q-state { margin-top:.7em; }
+    .room-q-grade { margin-top:.7em; margin-bottom:.65em; color:#373a3c; }
+    .room-flag { border:0; background:transparent; color:#373a3c; cursor:pointer; padding:0; text-align:left; font:400 12px Poppins,sans-serif; }
+    .room-q-body { min-width:0; }
+    .room-formulation { height:100%; background:#def2f8; padding:.75rem 1.25rem; color:#2f6473; }
+    .room-q-text { margin:0 0 .65em; font-size:15px; line-height:1.5; color:#2f6473; font-weight:400; }
+    .room-answers { display:grid; gap:7px; }
+    .room-answer { display:grid; grid-template-columns:20px 17px 1fr; gap:5px; align-items:start; border:0; background:transparent; padding:1px 0; color:#2f6473; text-align:left; cursor:pointer; font:400 15px/1.45 Poppins,sans-serif; }
+    .room-radio { width:14px; height:14px; border:1px solid #777; border-radius:50%; margin-top:3px; background:#fff; position:relative; }
+    .room-answer.selected .room-radio::after { content:""; position:absolute; inset:3px; border-radius:50%; background:#1177d1; }
+    .room-answer.selected .room-radio { border-color:#1177d1; }
+    .room-answer-letter { color:#2f6473; }
+    .room-clear { margin-top:9px; border:0; background:transparent; color:#1177d1; padding:0; font:400 12px Poppins,sans-serif; cursor:pointer; text-decoration:underline; }
+    .room-submit-row { min-height:104px; display:flex; justify-content:flex-end; align-items:flex-end; gap:10px; padding:28px 20px 20px; }
+    .room-btn { border:1px solid #c7c7c7; background:#fff; color:#373a3c; border-radius:0; padding:9px 13px; cursor:pointer; font:500 15px Poppins,sans-serif; }
+    .room-btn.primary { background:#1177d1; color:#fff; border-color:#1177d1; box-shadow:none; }
+    .room-btn.primary:hover { transform:none; filter:none; background:#0d64b4; }
+    .room-page-indicator { display:none; }
+    .room-activity-nav { border-top:1px solid #ccd8de; display:grid; grid-template-columns:1fr minmax(260px,400px) 1fr; gap:20px; align-items:center; padding:21px 20px 27px; }
+    .room-activity-nav div { display:grid; gap:7px; min-width:0; }
+    .room-activity-nav b { color:#263b46; font-size:13px; font-weight:500; letter-spacing:.12em; }
+    .room-activity-nav a { color:#0878d1; text-decoration:none; font-size:14px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; pointer-events:none; }
+    .room-activity-nav label { display:block; }
+    .room-activity-nav select { width:100%; height:37px; padding:0 13px; color:#455a64; border:1px solid #cad4da; background:#fff; font:400 14px Poppins,sans-serif; }
+    .room-activity-nav .next { text-align:right; }
+    .room-side { position:sticky; top:87px; }
+    .room-nav-toggle { display:none; }
+    .room-nav-card { background:#fff; border:1px solid #ccd8de; box-shadow:none; }
+    .room-nav-title { margin:0; padding:11px 17px 7px; border:0; font-size:21px; line-height:1.4; color:#455a64; font-weight:400; }
+    .room-nav-content { padding:7px 16px 24px; }
+    .room-nav-grid { display:grid; grid-template-columns:repeat(10,30px); gap:6px; }
+    .room-nav-btn { width:30px; height:40px; padding:0 0 20px; border:0; border-radius:3px; background:#fff; color:#222; cursor:pointer; position:relative; font:400 14px/20px Poppins,sans-serif; box-shadow:inset 0 0 0 1px #222; overflow:hidden; }
+    .room-nav-btn::before { content:""; position:absolute; inset:0; border:1px solid #222; border-radius:3px; pointer-events:none; }
+    .room-nav-btn::after { content:""; position:absolute; left:1px; right:1px; bottom:1px; height:19px; background:#fff; z-index:0; pointer-events:none; }
+    .room-nav-btn::before { z-index:2; }
+    .room-nav-btn.answered::after { background:#868e96; }
+    .room-nav-btn.current::before { border-width:3px; }
+    .room-nav-btn.current { outline:0; }
+    .room-nav-flag { display:none; position:absolute; top:1px; right:1px; width:13px; height:13px; background:#e00000; clip-path:polygon(0 0,100% 0,100% 100%); z-index:3; pointer-events:none; }
+    .room-nav-btn.flagged .room-nav-flag { display:block; }
+    .room-nav-btn:focus-visible { outline:2px solid #0878d1; outline-offset:2px; }
+    .room-nav-actions { margin-top:14px; }
+    .room-finish-link { border:0; background:transparent; color:#0878d1; padding:0; cursor:pointer; text-decoration:none; font:400 15px Poppins,sans-serif; }
+    .room-time { margin-top:18px; font-size:15px; }
+    .room-time strong { font-variant-numeric:tabular-nums; margin-left:6px; font-weight:600; }
+    .room-time.warning strong { color:#c31822; }
+    .room-footer { min-height:190px; margin:30px -16px 0; padding:72px 32px 22px; display:flex; align-items:flex-end; gap:34px; color:#455a64; font-size:12px; border-top:0; background-image:url('./tdtu-footer-bg.png'); background-repeat:repeat-x; background-position:center bottom; }
+    .room-footer a { color:#0878d1; text-decoration:none; }
+
     @media (max-width: 1180px) {
       .workspace { grid-template-columns:240px minmax(0,1fr); }
       .sidebar { padding-left:12px; padding-right:12px; }
       .brand { padding-left:8px; }
       .brand p { display:none; }
       .quiz-layout { grid-template-columns:minmax(0,1fr) 270px; }
+      .mode-grid { grid-template-columns:1fr 1fr; }
+      .room-layout { grid-template-columns:minmax(0,1fr) 270px; gap:18px; }
+      .room-nav-grid { grid-template-columns:repeat(7,30px); }
     }
 
     @media (max-width: 980px) {
@@ -507,6 +602,14 @@
       .legend { grid-template-columns:auto auto; justify-content:start; gap:14px; }
       .result-hero { grid-template-columns:auto 1fr; }
       .result-stats { grid-column:1/-1; min-width:0; }
+      .room-layout { grid-template-columns:1fr; }
+      .room-side { order:-1; position:static; }
+      .room-nav-toggle { display:flex; width:100%; justify-content:space-between; align-items:center; border:1px solid #d3d3d3; background:#fff; padding:12px 14px; cursor:pointer; font-weight:700; }
+      .room-nav-card { display:none; margin-top:8px; }
+      .room-side.open .room-nav-card { display:block; }
+      .room-nav-grid { grid-template-columns:repeat(10,1fr); }
+      .room-activity-nav { grid-template-columns:1fr 1fr; }
+      .room-activity-nav label { grid-column:1/-1; grid-row:2; }
     }
 
     @media (max-width: 720px) {
@@ -567,6 +670,29 @@
       .toast { width:100%; }
       .modal-backdrop { padding:12px; align-items:flex-end; }
       .modal { border-radius:24px 24px 16px 16px; padding:20px 16px; }
+      .room-navbar { height:58px; padding:0 8px; }
+      .room-icon-rail { display:none; }
+      .room-content-offset { margin-left:0; }
+      .room-course-card { margin:10px; padding:14px; }
+      .room-course-card h1 { font-size:21px; }
+      .room-course-card p { font-size:12px; line-height:1.4; }
+      .room-user-name,.room-top-icon { display:none; }
+      .room-hamburger { width:50px; height:58px; margin-left:-8px; }
+      .room-logo-image { width:245px; max-width:59vw; max-height:54px; }
+      .room-page-wrap { padding:16px 10px 30px; }
+      .room-main-title { font-size:21px; }
+      .room-question { grid-template-columns:1fr; gap:0; }
+      .room-q-info { min-height:0; display:grid; grid-template-columns:1fr auto; column-gap:10px; }
+      .room-q-info h3 { grid-row:1; }
+      .room-q-state,.room-q-grade { grid-column:1; }
+      .room-flag { grid-column:2; grid-row:1 / span 3; }
+      .room-formulation { padding:17px 14px; }
+      .room-nav-grid { grid-template-columns:repeat(10,30px); justify-content:start; }
+      .room-submit-row { flex-wrap:wrap; }
+      .room-activity-nav { grid-template-columns:1fr; gap:16px; }
+      .room-activity-nav label { grid-column:auto; grid-row:auto; }
+      .room-activity-nav .next { text-align:left; }
+      .room-footer { margin:20px -10px -30px; padding:70px 18px 20px; flex-direction:column; align-items:flex-start; gap:5px; }
     }
 
     @media (max-width: 520px) {
@@ -587,6 +713,10 @@
       .question-footer button { width:100%; }
       .result-stats { grid-template-columns:1fr; }
       .result-info h2 { font-size:23px; }
+      .room-avatar { width:33px; height:33px; }
+      .room-user { gap:7px; }
+      .room-exit { width:15px; font-size:13px; }
+      .room-nav-grid { grid-template-columns:repeat(8,30px); }
     }
   </style>
 </head>
@@ -617,6 +747,7 @@
         <button class="nav-btn active" data-go="home"><span class="nav-icon">⌂</span> Tổng quan</button>
         <button class="nav-btn" data-start="practice"><span class="nav-icon">✓</span> Luyện tập</button>
         <button class="nav-btn" data-start="exam"><span class="nav-icon">⏱</span> Thi thử</button>
+        <button class="nav-btn" data-start="room"><span class="nav-icon">▦</span> Trải nghiệm phòng thi</button>
 
         <div class="nav-label">Dữ liệu</div>
         <div class="side-card">
@@ -630,7 +761,7 @@
           <div class="hero">
             <div class="hero-main">
               <span class="eyebrow">✦ Mid-term Review</span>
-              <h2>Luyện đề như thi thật, nhưng đẹp như một app macOS.</h2>
+              <h2></h2>
               <p class="lead">Ôn tập bộ câu hỏi Phân tích và thiết kế yêu cầu với hai chế độ: luyện tập theo thứ tự gốc và thi thử xáo trộn hoàn toàn.</p>
             </div>
             <div class="hero-side">
@@ -639,7 +770,7 @@
                 <div class="stat"><div class="value">60'</div><div class="label">Thi thử</div></div>
               </div>
               <div class="stat-row">
-                <div class="stat"><div class="value">2</div><div class="label">Chế độ học</div></div>
+                <div class="stat"><div class="value">3</div><div class="label">Chế độ học</div></div>
                 <div class="stat"><div class="value">∞</div><div class="label">Lượt làm lại</div></div>
               </div>
             </div>
@@ -660,6 +791,14 @@
               <p>Mô phỏng một lượt thi: xáo trộn thứ tự câu hỏi và đáp án, có đồng hồ, đánh dấu câu, nộp bài xong mới xem kết quả.</p>
               <div class="mode-meta"><span class="tag">60 phút</span><span class="tag">Shuffle câu + đáp án</span><span class="tag">Review sau nộp</span></div>
               <button class="primary" data-start="exam">Vào phòng thi →</button>
+            </article>
+
+            <article class="mode-card room">
+              <div class="mode-chip">▦</div>
+              <h3>Trải nghiệm phòng thi</h3>
+              <p>Mô phỏng giao diện thi thật của hệ thống E-learning TDTU: 5 câu mỗi trang, bảng điều hướng 1–80 và đồng hồ đếm ngược.</p>
+              <div class="mode-meta"><span class="tag">Giao diện TDTU</span><span class="tag">16 trang</span><span class="tag">60 phút</span></div>
+              <button class="primary" data-start="room">Mở phòng thi TDTU →</button>
             </article>
           </div>
           <div class="ai-note"><strong>⚠ Lưu ý về đáp án:</strong> Đáp án trong bộ câu hỏi này do GPT tạo/gợi ý từ nội dung đề nên có thể có sai sót. Khi ôn thi, bạn nên ưu tiên đối chiếu với slide, tài liệu môn học và hướng dẫn của giảng viên.</div>
@@ -738,6 +877,78 @@
           <div class="review-list" id="reviewList"></div>
         </section>
 
+        <section class="screen room-screen" id="roomScreen">
+          <header class="room-navbar">
+            <div class="room-brand-wrap">
+              <button class="room-hamburger" type="button" aria-label="Side panel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+              <img class="room-logo-image" src="./tdtu-elearning-logo.png" alt="Đại học Tôn Đức Thắng – Ton Duc Thang University (TDTU)">
+            </div>
+            <div class="room-user">
+              <span class="room-user-name">TDTU - 523hXXXX</span>
+              <span class="room-top-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></span>
+              <span class="room-top-icon chat" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-9 8l-5 2 1.2-4A8 8 0 1 1 21 12Z"/></svg></span>
+              <span class="room-avatar" aria-hidden="true"><img src="./tdtu-default-avatar.png" alt=""></span>
+              <button class="room-exit" id="roomExitBtn" type="button" title="Thoát phòng thi mô phỏng" aria-label="Thoát phòng thi mô phỏng">⌄</button>
+            </div>
+          </header>
+
+          <nav class="room-icon-rail" aria-label="Điều hướng TDTU">
+            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M4 5c4-1 6 0 8 2v14c-2-2-4-3-8-2Zm16 0c-4-1-6 0-8 2v14c2-2 4-3 8-2Z"/></svg></span>
+            <span class="active"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 13 17 9M12 3v3M4.5 6.5l2 2"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10h-6v-6H9v6H3Z"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="1"/><path d="M8 3v4M16 3v4M4 10h16M8 14h2M14 14h2M8 18h2"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5Zm4 3v5c3 3 7 3 10 0v-5M21 9v7"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M7 3h9l4 4v14H7Z"/><path d="M16 3v5h5M3 7v14h13"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-6 3-9 8-9s7 3 8 9M17 18l2 2 4-5"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3Z"/></svg></span>
+            <span class="room-rail-bottom"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9Z"/></svg></span>
+          </nav>
+
+          <div class="room-content-offset">
+            <section class="room-course-card">
+              <h1>HK1_2026_502050_Phân tích và thiết kế yêu cầu_N09</h1>
+              <p>Sinh viên xem hướng dẫn sử dụng My course tại đây (Chọn Courses/Các thao tác đến Course/2. Ở phần My courses...)</p>
+              <div class="room-crumbs"><span>Dashboard</span><span>My courses</span><span>HK1_2026_502050_Phân tích và thiết kế yêu cầu_N09</span><span>Section 4 - Discovery Phase (con't 3)</span><span>Quiz - Review for Mid-term Test</span></div>
+            </section>
+
+            <div class="room-page-wrap">
+              <div class="room-layout">
+                <main class="room-quiz-column">
+                  <h2 class="room-main-title">Quiz - Review for Mid-term Test</h2>
+                  <div class="room-questions" id="roomQuestions"></div>
+                  <div class="room-submit-row">
+                    <span class="room-page-indicator" id="roomPageIndicator">Page 1 of 16</span>
+                    <button class="room-btn" id="roomPrevBtn" type="button">Previous page</button>
+                    <button class="room-btn primary" id="roomNextBtn" type="button">Next page</button>
+                  </div>
+                  <div class="room-activity-nav">
+                    <div><b>PREVIOUS ACTIVITY</b><a href="#" tabindex="-1">◂ Slide: Discovery Phase IV _BlackBoxTesting.</a></div>
+                    <label><span class="sr-only">Jump to</span><select aria-label="Jump to"><option>Jump to...</option></select></label>
+                    <div class="next"><b>NEXT ACTIVITY</b><a href="#" tabindex="-1">Slide: Design Discipline I ▸</a></div>
+                  </div>
+                </main>
+
+                <aside class="room-side" id="roomSide">
+                  <button class="room-nav-toggle" id="roomNavToggle" type="button"><span>Quiz navigation</span><span>☰</span></button>
+                  <section class="room-nav-card">
+                    <h3 class="room-nav-title">Quiz navigation</h3>
+                    <div class="room-nav-content">
+                      <div class="room-nav-grid" id="roomNavGrid"></div>
+                      <div class="room-nav-actions">
+                        <button class="room-finish-link" id="roomFinishBtn" type="button">Finish attempt ...</button>
+                        <div class="room-time" id="roomTimeWrap">Time left <strong id="roomTimer">60:00</strong></div>
+                      </div>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </div>
+            <footer class="room-footer"><a href="https://www.tdtu.edu.vn/" tabindex="-1">https://www.tdtu.edu.vn/</a><span>(028) 37 755 035</span><span>Accessibility settings</span></footer>
+          </div>
+        </section>
+
         <section class="screen" id="errorScreen">
           <div class="panel empty-state">
             <div class="empty-icon">!</div>
@@ -770,6 +981,8 @@
   const QUIZ_JSON_PATH = './tdtu_midterm_review_80_questions_with_answers.json';
   const EXAM_DURATION_MINUTES = 60;
   const EXAM_STORAGE_KEY = 'tdtuQuizStudio.exam.v1';
+  const ROOM_STORAGE_KEY = 'tdtuQuizStudio.room.v1';
+  const ROOM_PAGE_SIZE = 5;
 
   const state = {
     data: null,
@@ -780,6 +993,8 @@
     practiceLocked: {},
     practiceStartedAt: null,
     flags: new Set(),
+    roomPage: 0,
+    roomFocusIndex: 0,
     examStartedAt: null,
     examDeadline: null,
     timerId: null,
@@ -787,7 +1002,7 @@
   };
 
   const $ = (id) => document.getElementById(id);
-  const screens = ['homeScreen','quizScreen','resultScreen','errorScreen'];
+  const screens = ['homeScreen','quizScreen','roomScreen','resultScreen','errorScreen'];
 
   function showScreen(id) {
     screens.forEach(s => $(s).classList.toggle('active', s === id));
@@ -893,6 +1108,170 @@
     renderQuestion();
     startTimer();
     setActiveNav('exam');
+  }
+
+  function startRoom(forceNew = false) {
+    stopTimer();
+    state.mode = 'room';
+    state.submitted = false;
+
+    if (!forceNew && restoreRoom()) {
+      toast('Đã khôi phục lượt thi trong phòng TDTU.');
+    } else {
+      state.questions = shuffle(state.data.questions).map(q => normalizeQuestion(q, true));
+      state.current = 0;
+      state.roomPage = 0;
+      state.roomFocusIndex = 0;
+      state.answers = {};
+      state.flags = new Set();
+      state.examStartedAt = Date.now();
+      state.examDeadline = state.examStartedAt + EXAM_DURATION_MINUTES * 60 * 1000;
+      saveRoom();
+    }
+
+    showScreen('roomScreen');
+    buildRoomNav();
+    renderRoomPage();
+    $('roomScreen').scrollTo({top:0});
+    startTimer();
+    setActiveNav('room');
+  }
+
+  function buildRoomNav() {
+    const grid = $('roomNavGrid');
+    grid.innerHTML = '';
+    state.questions.forEach((q, index) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'room-nav-btn';
+      btn.textContent = index + 1;
+      const flag = document.createElement('span');
+      flag.className = 'room-nav-flag';
+      flag.setAttribute('aria-hidden', 'true');
+      btn.appendChild(flag);
+      btn.addEventListener('click', () => {
+        state.roomPage = Math.floor(index / ROOM_PAGE_SIZE);
+        state.roomFocusIndex = index;
+        renderRoomPage();
+        saveRoom();
+        requestAnimationFrame(() => document.querySelector(`[data-room-index="${index}"]`)?.scrollIntoView({behavior:'smooth',block:'center'}));
+        if (window.innerWidth <= 980) $('roomSide').classList.remove('open');
+      });
+      grid.appendChild(btn);
+    });
+    updateRoomNav();
+  }
+
+  function renderRoomPage() {
+    const totalPages = Math.ceil(state.questions.length / ROOM_PAGE_SIZE);
+    state.roomPage = Math.max(0, Math.min(state.roomPage, totalPages - 1));
+    const start = state.roomPage * ROOM_PAGE_SIZE;
+    const pageQuestions = state.questions.slice(start, start + ROOM_PAGE_SIZE);
+    const host = $('roomQuestions');
+    host.innerHTML = '';
+
+    pageQuestions.forEach((q, localIndex) => {
+      const index = start + localIndex;
+      const chosen = state.answers[q.id];
+      const article = document.createElement('article');
+      article.className = 'room-question';
+      article.dataset.roomIndex = index;
+
+      const info = document.createElement('div');
+      info.className = 'room-q-info';
+      info.innerHTML = `
+        <h3>Question ${index + 1}</h3>
+        <div class="room-q-state">${chosen ? 'Answer saved' : 'Not yet answered'}</div>
+        <div class="room-q-grade">Marked out of<br>1.00</div>
+        <button class="room-flag" type="button">${state.flags.has(q.id) ? '⚑ Remove flag' : '⚐ Flag question'}</button>`;
+      info.querySelector('.room-flag').addEventListener('click', () => {
+        if (state.flags.has(q.id)) state.flags.delete(q.id); else state.flags.add(q.id);
+        state.roomFocusIndex = index;
+        saveRoom();
+        renderRoomPage();
+      });
+
+      const body = document.createElement('div');
+      body.className = 'room-q-body';
+      const formulation = document.createElement('div');
+      formulation.className = 'room-formulation';
+      const title = document.createElement('p');
+      title.className = 'room-q-text';
+      title.textContent = q.question;
+      const answers = document.createElement('div');
+      answers.className = 'room-answers';
+
+      q.options.forEach((opt, optionIndex) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `room-answer${chosen === opt.key ? ' selected' : ''}`;
+        button.innerHTML = `<span class="room-radio"></span><span class="room-answer-letter">${String.fromCharCode(97 + optionIndex)}.</span><span class="room-answer-text"></span>`;
+        button.querySelector('.room-answer-text').textContent = opt.text;
+        button.addEventListener('click', () => {
+          state.answers[q.id] = opt.key;
+          state.roomFocusIndex = index;
+          saveRoom();
+          renderRoomPage();
+        });
+        answers.appendChild(button);
+      });
+
+      formulation.append(title, answers);
+      if (chosen) {
+        const clear = document.createElement('button');
+        clear.type = 'button';
+        clear.className = 'room-clear';
+        clear.textContent = 'Clear my choice';
+        clear.addEventListener('click', () => {
+          delete state.answers[q.id];
+          state.roomFocusIndex = index;
+          saveRoom();
+          renderRoomPage();
+        });
+        formulation.appendChild(clear);
+      }
+      body.appendChild(formulation);
+      article.append(info, body);
+      host.appendChild(article);
+    });
+
+    $('roomPageIndicator').textContent = `Page ${state.roomPage + 1} of ${totalPages}`;
+    $('roomPrevBtn').disabled = state.roomPage === 0;
+    $('roomPrevBtn').style.opacity = state.roomPage === 0 ? '.45' : '1';
+    $('roomPrevBtn').style.display = state.roomPage === 0 ? 'none' : '';
+    $('roomNextBtn').textContent = state.roomPage === totalPages - 1 ? 'Finish attempt ...' : 'Next page';
+    updateRoomNav();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function updateRoomNav() {
+    [...$('roomNavGrid').children].forEach((btn, index) => {
+      const q = state.questions[index];
+      const onCurrentPage = Math.floor(index / ROOM_PAGE_SIZE) === state.roomPage;
+      const answered = !!state.answers[q.id];
+      const flagged = state.flags.has(q.id);
+      btn.classList.toggle('current', onCurrentPage);
+      btn.classList.toggle('answered', answered);
+      btn.classList.toggle('flagged', flagged);
+      if (onCurrentPage) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+      const label = `Question ${index + 1}, ${answered ? 'Answer saved' : 'Not yet answered'}${flagged ? ', Flagged' : ''}${onCurrentPage ? ', Current page' : ''}`;
+      btn.setAttribute('aria-label', label);
+      btn.title = label;
+    });
+  }
+
+  function roomChangePage(delta) {
+    const totalPages = Math.ceil(state.questions.length / ROOM_PAGE_SIZE);
+    if (delta > 0 && state.roomPage === totalPages - 1) {
+      openSubmitModal();
+      return;
+    }
+    state.roomPage = Math.max(0, Math.min(totalPages - 1, state.roomPage + delta));
+    state.roomFocusIndex = state.roomPage * ROOM_PAGE_SIZE;
+    saveRoom();
+    renderRoomPage();
+    $('roomScreen').scrollTo({top:0,behavior:'smooth'});
   }
 
   function renderQuestion() {
@@ -1018,8 +1397,11 @@
     const totalSeconds = Math.floor(remaining / 1000);
     const mm = Math.floor(totalSeconds / 60);
     const ss = totalSeconds % 60;
-    $('timer').textContent = `${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    const display = `${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    $('timer').textContent = display;
     $('timer').classList.toggle('warning', remaining <= 5 * 60 * 1000);
+    $('roomTimer').textContent = `${Math.floor(totalSeconds / 3600)}:${String(mm % 60).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    $('roomTimeWrap').classList.toggle('warning', remaining <= 5 * 60 * 1000);
     if (remaining <= 0) {
       stopTimer();
       toast('Hết giờ. Hệ thống tự động nộp bài.');
@@ -1038,6 +1420,20 @@
       examDeadline: state.examDeadline
     };
     localStorage.setItem(EXAM_STORAGE_KEY, JSON.stringify(payload));
+  }
+
+  function saveRoom() {
+    if (state.mode !== 'room' || state.submitted) return;
+    const payload = {
+      questions: state.questions,
+      roomPage: state.roomPage,
+      roomFocusIndex: state.roomFocusIndex,
+      answers: state.answers,
+      flags: [...state.flags],
+      examStartedAt: state.examStartedAt,
+      examDeadline: state.examDeadline
+    };
+    localStorage.setItem(ROOM_STORAGE_KEY, JSON.stringify(payload));
   }
 
   function restoreExam() {
@@ -1062,6 +1458,29 @@
     }
   }
 
+  function restoreRoom() {
+    try {
+      const raw = localStorage.getItem(ROOM_STORAGE_KEY);
+      if (!raw) return false;
+      const saved = JSON.parse(raw);
+      if (!saved.questions?.length || !saved.examDeadline || saved.examDeadline <= Date.now()) {
+        localStorage.removeItem(ROOM_STORAGE_KEY);
+        return false;
+      }
+      state.questions = saved.questions;
+      state.roomPage = Math.min(saved.roomPage || 0, Math.ceil(saved.questions.length / ROOM_PAGE_SIZE) - 1);
+      state.roomFocusIndex = Math.min(saved.roomFocusIndex || 0, saved.questions.length - 1);
+      state.answers = saved.answers || {};
+      state.flags = new Set(saved.flags || []);
+      state.examStartedAt = saved.examStartedAt;
+      state.examDeadline = saved.examDeadline;
+      return true;
+    } catch {
+      localStorage.removeItem(ROOM_STORAGE_KEY);
+      return false;
+    }
+  }
+
   function openSubmitModal() {
     const answered = Object.keys(state.answers).length;
     const missing = state.questions.length - answered;
@@ -1080,13 +1499,14 @@
     stopTimer();
     $('submitModal').classList.remove('show');
     if (state.mode === 'exam') localStorage.removeItem(EXAM_STORAGE_KEY);
+    if (state.mode === 'room') localStorage.removeItem(ROOM_STORAGE_KEY);
 
     const total = state.questions.length;
     const answered = Object.keys(state.answers).length;
     const correct = state.questions.reduce((sum, q) => sum + (state.answers[q.id] === q.correctAnswer ? 1 : 0), 0);
     const accuracy = Math.round((correct / total) * 100);
     const startedAt = state.mode === 'practice' ? state.practiceStartedAt : state.examStartedAt;
-    const maxMs = state.mode === 'exam' ? EXAM_DURATION_MINUTES * 60 * 1000 : Number.MAX_SAFE_INTEGER;
+    const maxMs = state.mode === 'practice' ? Number.MAX_SAFE_INTEGER : EXAM_DURATION_MINUTES * 60 * 1000;
     const elapsedMs = Math.max(0, Math.min(maxMs, Date.now() - (startedAt || Date.now())));
     const elapsedSec = Math.floor(elapsedMs / 1000);
     const usedMin = Math.floor(elapsedSec / 60);
@@ -1100,9 +1520,11 @@
     const isPractice = state.mode === 'practice';
     $('resultTitle').textContent = isPractice
       ? 'Đã hoàn thành lượt luyện.'
-      : (accuracy >= 80 ? 'Bài làm rất chắc.' : accuracy >= 60 ? 'Hoàn thành bài thi.' : 'Đã chấm xong bài thi.');
+      : state.mode === 'room'
+        ? 'Đã rời phòng thi TDTU.'
+        : (accuracy >= 80 ? 'Bài làm rất chắc.' : accuracy >= 60 ? 'Hoàn thành bài thi.' : 'Đã chấm xong bài thi.');
     $('resultDesc').textContent = `Bạn trả lời đúng ${correct} trên ${total} câu. Phần bên dưới hiển thị lựa chọn của bạn và đáp án đúng cho từng câu.`;
-    $('retryExamBtn').textContent = isPractice ? 'Luyện lại từ đầu' : 'Thi lại';
+    $('retryExamBtn').textContent = isPractice ? 'Luyện lại từ đầu' : state.mode === 'room' ? 'Vào lại phòng thi' : 'Thi lại';
 
     renderReview();
     showScreen('resultScreen');
@@ -1135,6 +1557,7 @@
 
   function goHome() {
     if (state.mode === 'exam' && !state.submitted) saveExam();
+    if (state.mode === 'room' && !state.submitted) saveRoom();
     stopTimer();
     showScreen('homeScreen');
     setActiveNav('home');
@@ -1152,6 +1575,11 @@
       startPractice();
       return;
     }
+    if (state.mode === 'room') {
+      localStorage.removeItem(ROOM_STORAGE_KEY);
+      startRoom(true);
+      return;
+    }
     localStorage.removeItem(EXAM_STORAGE_KEY);
     startExam(true);
   }
@@ -1159,6 +1587,7 @@
   // Event bindings
   document.querySelectorAll('[data-start="practice"]').forEach(b => b.addEventListener('click', startPractice));
   document.querySelectorAll('[data-start="exam"]').forEach(b => b.addEventListener('click', () => startExam(false)));
+  document.querySelectorAll('[data-start="room"]').forEach(b => b.addEventListener('click', () => startRoom(false)));
   document.querySelectorAll('[data-go="home"]').forEach(b => b.addEventListener('click', goHome));
   $('homeBtn').addEventListener('click', goHome);
   $('mobileHome').addEventListener('click', goHome);
@@ -1174,6 +1603,11 @@
   $('cancelSubmitBtn').addEventListener('click', () => $('submitModal').classList.remove('show'));
   $('confirmSubmitBtn').addEventListener('click', submitExam);
   $('retryExamBtn').addEventListener('click', retryCurrentMode);
+  $('roomExitBtn').addEventListener('click', goHome);
+  $('roomPrevBtn').addEventListener('click', () => roomChangePage(-1));
+  $('roomNextBtn').addEventListener('click', () => roomChangePage(1));
+  $('roomFinishBtn').addEventListener('click', openSubmitModal);
+  $('roomNavToggle').addEventListener('click', () => $('roomSide').classList.toggle('open'));
   $('submitModal').addEventListener('click', (e) => { if (e.target === $('submitModal')) $('submitModal').classList.remove('show'); });
 
   $('fullscreenBtn').addEventListener('click', async () => {
@@ -1196,6 +1630,7 @@
 
   window.addEventListener('beforeunload', () => {
     if (state.mode === 'exam' && !state.submitted) saveExam();
+    if (state.mode === 'room' && !state.submitted) saveRoom();
   });
 
   loadData();
