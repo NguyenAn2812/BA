@@ -64,21 +64,21 @@
     button { -webkit-tap-highlight-color: transparent; }
 
     .app-shell {
-      width: min(1480px, calc(100% - 32px));
-      margin: 20px auto;
-      min-height: calc(100vh - 40px);
-      border: 1px solid rgba(255,255,255,.86);
-      border-radius: 30px;
-      background: rgba(248, 250, 255, 0.63);
+      width: 100%;
+      margin: 0;
+      min-height: 100dvh;
+      border: 0;
+      border-radius: 0;
+      background: rgba(248, 250, 255, 0.58);
       backdrop-filter: blur(28px) saturate(150%);
       -webkit-backdrop-filter: blur(28px) saturate(150%);
-      box-shadow: var(--shadow);
+      box-shadow: none;
       overflow: hidden;
       position: relative;
     }
 
     .window-bar {
-      height: 64px;
+      height: 56px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -122,15 +122,19 @@
     .icon-button:hover { transform: translateY(-1px); background: white; box-shadow: var(--shadow-soft); }
 
     .workspace {
-      min-height: calc(100vh - 104px);
+      min-height: calc(100dvh - 56px);
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
+      grid-template-columns: 280px minmax(0, 1fr);
     }
 
     .sidebar {
-      padding: 24px 18px 26px;
+      padding: 22px 16px 26px;
       border-right: 1px solid var(--border);
       background: rgba(250,252,255,.42);
+      position: sticky;
+      top: 56px;
+      height: calc(100dvh - 56px);
+      overflow-y: auto;
     }
 
     .brand {
@@ -199,8 +203,10 @@
     .side-card p { margin:7px 0 0; color: var(--muted); font-size:12px; line-height:1.5; }
 
     .main {
-      padding: 30px;
+      padding: 24px 28px 40px;
       min-width: 0;
+      width: 100%;
+      max-width: none;
     }
 
     .screen { display:none; animation: fadeUp .28s ease both; }
@@ -340,7 +346,7 @@
     .progress-track { height:8px; background:rgba(90,110,155,.10); border-radius:999px; overflow:hidden; margin-bottom:18px; }
     .progress-fill { height:100%; width:0; background:linear-gradient(90deg,#3478f6,#8b65ff); border-radius:999px; transition:width .25s ease; }
 
-    .quiz-layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:18px; align-items:start; }
+    .quiz-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,320px); gap:18px; align-items:start; }
     .question-card { padding:28px; }
     .question-head { display:flex; align-items:center; justify-content:space-between; gap:15px; margin-bottom:17px; }
     .q-number { font-size:12px; font-weight:850; color:#2b68d7; background:rgba(59,113,235,.10); padding:8px 11px; border-radius:999px; }
@@ -389,7 +395,10 @@
 
     .question-footer { margin-top:22px; padding-top:18px; border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:12px; }
 
-    .exam-panel { padding:18px; position:sticky; top:84px; }
+    .exam-panel { padding:18px; position:sticky; top:76px; }
+    .exam-panel-top { display:block; }
+    .map-toggle { display:none; }
+    .exam-map-wrap { display:block; }
     .timer-box {
       padding:18px;
       border-radius:18px;
@@ -471,38 +480,113 @@
 
     .mobile-menu { display:none; }
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1180px) {
+      .workspace { grid-template-columns:240px minmax(0,1fr); }
+      .sidebar { padding-left:12px; padding-right:12px; }
+      .brand { padding-left:8px; }
+      .brand p { display:none; }
+      .quiz-layout { grid-template-columns:minmax(0,1fr) 270px; }
+    }
+
+    @media (max-width: 980px) {
       .workspace { grid-template-columns:1fr; }
       .sidebar { display:none; }
       .mobile-menu { display:grid; }
       .hero { grid-template-columns:1fr; }
       .hero-side { grid-template-columns:1fr 1fr; }
-      .quiz-layout { grid-template-columns:1fr; }
-      .exam-panel { position:static; }
-      .question-map { grid-template-columns:repeat(10,1fr); max-height:none; }
+      .quiz-layout { display:flex; flex-direction:column; gap:12px; }
+      .question-card { width:100%; }
+      .exam-panel { order:-1; width:100%; position:static; padding:12px; }
+      .exam-panel-top { display:flex; align-items:stretch; gap:10px; }
+      .timer-box { flex:1; margin:0; padding:12px 14px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+      .timer { margin:0; font-size:24px; }
+      .map-toggle { display:inline-flex; min-width:112px; }
+      .exam-map-wrap { display:none; margin-top:10px; }
+      .exam-panel.map-open .exam-map-wrap { display:block; }
+      .question-map { grid-template-columns:repeat(10,minmax(34px,1fr)); max-height:160px; overflow:auto; }
+      .legend { grid-template-columns:auto auto; justify-content:start; gap:14px; }
       .result-hero { grid-template-columns:auto 1fr; }
       .result-stats { grid-column:1/-1; min-width:0; }
     }
 
     @media (max-width: 720px) {
-      .app-shell { width:100%; min-height:100vh; margin:0; border-radius:0; border-left:0; border-right:0; }
-      .window-bar { grid-template-columns:1fr auto; padding:0 14px; }
-      .window-title { display:none; }
-      .main { padding:18px 14px 28px; }
-      .hero-main { padding:24px; }
-      .hero h2 { font-size:34px; }
+      body { background:linear-gradient(160deg,#f4f7ff,#eef3ff 48%,#f7f2ff); }
+      body::before, body::after { opacity:.13; }
+      .app-shell { width:100%; min-height:100dvh; margin:0; border-radius:0; }
+      .window-bar { height:52px; grid-template-columns:auto 1fr auto; padding:0 12px; }
+      .traffic { gap:7px; }
+      .dot { width:11px; height:11px; }
+      .window-title { display:block; justify-self:center; font-size:12px; }
+      .workspace { min-height:calc(100dvh - 52px); }
+      .main { padding:12px 10px 28px; }
+      .panel { border-radius:18px; }
+      .hero-main { padding:22px 18px; }
+      .hero h2 { font-size:32px; }
       .hero-side { grid-template-columns:1fr; }
       .mode-grid { grid-template-columns:1fr; }
-      .question-card { padding:20px 16px; }
-      .question-text { font-size:17px; }
+      .mode-card { padding:20px 18px; }
+      .quiz-top {
+        position:sticky;
+        top:52px;
+        z-index:35;
+        margin:0 -10px 10px;
+        padding:10px;
+        background:rgba(245,248,255,.88);
+        backdrop-filter:blur(18px) saturate(150%);
+        -webkit-backdrop-filter:blur(18px) saturate(150%);
+        border-bottom:1px solid var(--border);
+      }
+      .quiz-title h2 { font-size:20px; }
+      .quiz-title p { display:none; }
+      .quiz-actions { gap:6px; }
+      .quiz-actions button { padding:9px 11px; border-radius:12px; font-size:12px; }
+      .progress-track { margin-bottom:10px; height:6px; }
+      .exam-panel { border-radius:16px; }
+      .timer-label { font-size:9px; }
+      .timer { font-size:21px; }
+      .map-toggle { min-width:96px; padding:9px 10px; font-size:12px; }
+      .question-map { grid-template-columns:repeat(8,minmax(32px,1fr)); gap:6px; max-height:154px; }
+      .map-btn { min-height:34px; border-radius:9px; }
+      .question-card { padding:18px 14px; }
+      .question-head { margin-bottom:14px; }
+      .question-text { font-size:17px; line-height:1.48; margin-bottom:16px; }
+      .options { gap:9px; }
+      .option { padding:12px; border-radius:14px; grid-template-columns:32px 1fr; gap:10px; }
+      .letter { width:32px; height:32px; border-radius:10px; }
+      .option-text { padding-top:4px; font-size:14px; }
+      .question-footer { margin-top:16px; padding-top:14px; gap:8px; }
+      .question-footer button { flex:1; }
+      .result-hero { grid-template-columns:1fr; text-align:center; padding:20px 16px; }
+      .score-ring { margin:auto; width:108px; height:108px; }
+      .result-stats { grid-template-columns:repeat(3,1fr); gap:7px; }
+      .mini-stat { padding:10px 6px; }
+      .mini-stat strong { font-size:17px; }
+      .review-item { padding:15px 13px; border-radius:16px; }
+      .ai-note { padding:13px 14px; font-size:12px; border-radius:15px; }
+      .toast-wrap { right:10px; left:10px; bottom:10px; }
+      .toast { width:100%; }
+      .modal-backdrop { padding:12px; align-items:flex-end; }
+      .modal { border-radius:24px 24px 16px 16px; padding:20px 16px; }
+    }
+
+    @media (max-width: 520px) {
+      .traffic { display:none; }
+      .window-bar { grid-template-columns:1fr auto; }
+      .window-title { justify-self:start; font-weight:800; color:#4d5870; }
+      .bar-actions { gap:6px; }
+      .icon-button { width:34px; height:34px; border-radius:11px; }
+      .hero h2 { font-size:28px; }
+      .hero p { font-size:14px; }
       .quiz-top { align-items:flex-start; flex-direction:column; }
-      .quiz-actions { justify-content:flex-start; }
+      .quiz-actions { width:100%; display:grid; grid-template-columns:1fr 1fr; }
+      .quiz-actions .danger { grid-column:1/-1; }
+      .exam-panel-top { gap:8px; }
+      .timer-box { padding:10px 12px; }
+      .question-map { grid-template-columns:repeat(6,minmax(32px,1fr)); max-height:190px; }
       .question-footer { flex-direction:column-reverse; }
       .question-footer button { width:100%; }
-      .question-map { grid-template-columns:repeat(8,1fr); }
-      .result-hero { grid-template-columns:1fr; text-align:center; }
-      .score-ring { margin:auto; }
-      .result-stats { grid-template-columns:1fr 1fr 1fr; }
+      .result-stats { grid-template-columns:1fr; }
+      .result-info h2 { font-size:23px; }
     }
   </style>
 </head>
@@ -612,14 +696,19 @@
             </section>
 
             <aside class="panel exam-panel" id="examPanel" style="display:none">
-              <div class="timer-box">
-                <div class="timer-label">Thời gian còn lại</div>
-                <div class="timer" id="timer">60:00</div>
+              <div class="exam-panel-top">
+                <div class="timer-box">
+                  <div class="timer-label">Thời gian còn lại</div>
+                  <div class="timer" id="timer">60:00</div>
+                </div>
+                <button class="secondary map-toggle" id="mapToggleBtn" type="button">☷ Danh sách câu</button>
               </div>
-              <div class="question-map" id="questionMap"></div>
-              <div class="legend">
-                <div class="legend-row"><span class="legend-dot blue"></span> Đã trả lời</div>
-                <div class="legend-row"><span class="legend-dot orange"></span> Đã đánh dấu</div>
+              <div class="exam-map-wrap" id="examMapWrap">
+                <div class="question-map" id="questionMap"></div>
+                <div class="legend">
+                  <div class="legend-row"><span class="legend-dot blue"></span> Đã trả lời</div>
+                  <div class="legend-row"><span class="legend-dot orange"></span> Đã đánh dấu</div>
+                </div>
               </div>
             </aside>
           </div>
@@ -767,6 +856,7 @@
     $('submitExamBtn').style.display = '';
     $('submitExamBtn').textContent = 'Kết thúc lượt luyện';
     $('examPanel').style.display = 'none';
+    $('examPanel').classList.remove('map-open');
     showScreen('quizScreen');
     renderQuestion();
     setActiveNav('practice');
@@ -796,6 +886,8 @@
     $('submitExamBtn').style.display = '';
     $('submitExamBtn').textContent = 'Nộp bài';
     $('examPanel').style.display = '';
+    $('examPanel').classList.remove('map-open');
+    $('mapToggleBtn').textContent = '☷ Danh sách câu';
     showScreen('quizScreen');
     buildQuestionMap();
     renderQuestion();
@@ -881,6 +973,7 @@
         state.current = index;
         saveExam();
         renderQuestion();
+        if (window.innerWidth <= 980) $('examPanel').classList.remove('map-open');
       });
       map.appendChild(btn);
     });
@@ -1073,6 +1166,10 @@
   $('prevBtn').addEventListener('click', goPrev);
   $('nextBtn').addEventListener('click', goNext);
   $('flagBtn').addEventListener('click', toggleFlag);
+  $('mapToggleBtn').addEventListener('click', () => {
+    $('examPanel').classList.toggle('map-open');
+    $('mapToggleBtn').textContent = $('examPanel').classList.contains('map-open') ? '✕ Đóng danh sách' : '☷ Danh sách câu';
+  });
   $('submitExamBtn').addEventListener('click', openSubmitModal);
   $('cancelSubmitBtn').addEventListener('click', () => $('submitModal').classList.remove('show'));
   $('confirmSubmitBtn').addEventListener('click', submitExam);
