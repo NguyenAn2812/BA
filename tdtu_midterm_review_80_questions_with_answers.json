@@ -1,0 +1,1371 @@
+{
+  "title": "TDTU - Phân tích và thiết kế yêu cầu - Review for Mid-term Test",
+  "totalQuestions": 80,
+  "formatVersion": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A class diagram displays a generalization hierarchy where 'Publication' is the superclass, and 'Book' and 'Magazine' are sibling subclasses. If an analyst wants to add an attribute 'isbnNumber' that applies only to books and not to magazines, where should it be placed?",
+      "options": {
+        "a": "It should be added to the 'Publication' superclass so both subclasses have it.",
+        "b": "It should be added to the 'Book' subclass to keep 'Magazine' free of irrelevant attributes.",
+        "c": "It should be added to both 'Book' and 'Magazine' subclasses to ensure consistency.",
+        "d": "It should be added to a newly created 'ISBN' association class linked to 'Publication'."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 2,
+      "question": "A systems analyst says, 'We don't need business modeling. Let's start designing the software immediately.' What is the best argument to counter this analyst's claim?",
+      "options": {
+        "a": "Business modeling is used to test the compiled code.",
+        "b": "Business modeling is required to write programming classes.",
+        "c": "Business modeling defines the database schema and queries.",
+        "d": "Business modeling ensures we understand the context before automating."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 3,
+      "question": "A university database models 'Student' and 'CourseSection'. A student can enroll in multiple sections, and a section contains multiple students. The system must record the 'grade' (e.g., A, B, C) for each specific student enrollment. How should the 'grade' attribute be modeled?",
+      "options": {
+        "a": "It should be modeled inside an Association Class named 'CourseEnrollment'.",
+        "b": "It should be modeled as an attribute inside the 'Student' class.",
+        "c": "It should be modeled as an attribute inside the 'CourseSection' class.",
+        "d": "It should be modeled as separate attributes in both 'Student' and 'CourseSection'."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 4,
+      "question": "An enterprise payroll system has been live for six months. Due to a new national tax law, the company must quickly modify and update the system's tax calculation engine. Which SDLC stage is this active change part of?",
+      "options": {
+        "a": "Implementation stage",
+        "b": "Analysis stage",
+        "c": "Support/Maintenance stage",
+        "d": "Design stage"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 5,
+      "question": "A BA needs to map the logical, step-by-step business process flow of how an order moves through Sales, Credit Approval, and Shipping departments. Which UML diagram is best suited to show this workflow?",
+      "options": {
+        "a": "State Machine Diagram",
+        "b": "Class Diagram",
+        "c": "Deployment Diagram",
+        "d": "Activity Diagram"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 6,
+      "question": "On a UML diagram, an analyst sees an oval with a diagonal slash through it. What does this notation represent?",
+      "options": {
+        "a": "A Business Actor.",
+        "b": "An Association.",
+        "c": "A System Boundary.",
+        "d": "A Business Use Case."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 7,
+      "question": "When a professor submits grades at the end of the semester, the system automatically updates the student records database and sends a copy of the official class transcript to the Registrar's office for archiving. What role does the Registrar play in this grading use case model?",
+      "options": {
+        "a": "External Receiver Actor",
+        "b": "Primary System Actor",
+        "c": "Primary Business Actor",
+        "d": "External Server Actor"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 8,
+      "question": "The business team demands that a new system include 40 features, but the developers state they can only deliver 15 within the tight timeline. The BA facilitates a meeting to help both teams agree on a prioritized list of 18 essential features. Which BA skill is primarily being applied?",
+      "options": {
+        "a": "Python database programming",
+        "b": "Strategic economic analysis",
+        "c": "UML static requirements modeling",
+        "d": "Negotiation and facilitation"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 9,
+      "question": "At the end of iteration 1, the client asks why the system does not have an online chat support feature. The team shows that this feature was not in the agreed baseline. How did the baseline protect the team here?",
+      "options": {
+        "a": "It allowed developers to skip the coding phase for support.",
+        "b": "It automatically generated a warning message for the client.",
+        "c": "It provided a clear comparison of current progress against original commitments.",
+        "d": "It forced the client to use only brief use-case descriptions."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 10,
+      "question": "An analyst is working on a university registration system. They have completed the process of decomposing business events, identifying actors, and creating a validated System Use Case Model. In which phase of the Unified Process does this analyst's current work primarily belong?",
+      "options": {
+        "a": "Elaboration Phase",
+        "b": "Construction Phase",
+        "c": "Inception Phase",
+        "d": "Transition Phase"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 11,
+      "question": "An analyst is writing a fully-dressed use-case description for 'Approve Waitlist' in a student enrollment system, which can only be done by a registrar. Which of the following is a valid precondition for this use case?",
+      "options": {
+        "a": "The registrar clicks the 'Approve Waitlist' button.",
+        "b": "The registrar is logged in and the target course is full.",
+        "c": "The student is successfully registered in the course.",
+        "d": "The system displays a confirmation message to the student."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 12,
+      "question": "A project team plans the entire project schedule, scope, and budget in detail at the very beginning of a 12-month project. Which approach does this describe?",
+      "options": {
+        "a": "Predictive approach, which plans the whole project at the start.",
+        "b": "Hybrid approach, which avoids any up-front planning.",
+        "c": "Adaptive approach, which plans iteration-by-iteration.",
+        "d": "Agile approach, which delivers working software at the end."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 13,
+      "question": "At the start of a medical booking system project, the team needs a rapid way to confirm the high-level scope of 'Schedule Appointment' with clinical sponsors without getting bogged down in step-by-step alternate flows. What should they write?",
+      "options": {
+        "a": "A fully-dressed use-case description with all alternative flows.",
+        "b": "A brief use-case description summarizing the main success path.",
+        "c": "A casual use-case description mentioning multiple possible scenarios.",
+        "d": "A database schema detailing all patient table attributes."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 14,
+      "question": "A systems analyst is building a local warehouse management system. The requirements specify: 'The system must coordinate inventory for our single physical warehouse located in Hanoi, and keep track of over 500 different product categories.' Applying class identification rules, how should 'Hanoi Warehouse' and 'Product' be modeled?",
+      "options": {
+        "a": "Both 'Hanoi Warehouse' and 'Product' should be modeled as attributes of a 'City' class.",
+        "b": "'Hanoi Warehouse' is a class, while 'Product' is an attribute of that class.",
+        "c": "'Product' is an entity class, while 'Hanoi Warehouse' is a specific object instance.",
+        "d": "Both 'Hanoi Warehouse' and 'Product' must be modeled as separate entity classes."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 15,
+      "question": "A large university system contains over 60 use cases spanning different departments like Registrar, Housing, and Financial Aid. What strategy should the team use to keep the use-case diagrams readable?",
+      "options": {
+        "a": "Merge similar use cases to reduce the total count to under ten.",
+        "b": "Group related use cases into functional packages based on subsystems.",
+        "c": "Remove all system boundaries and associations from the model.",
+        "d": "Use include relationships to link all system use cases together."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 16,
+      "question": "A business analyst is reviewing an activity diagram and spots a step where a document is transferred between departments four times, causing delays. This is an example of using activity diagrams to:",
+      "options": {
+        "a": "Program database classes.",
+        "b": "Reveal inefficiencies and hand-offs in a business process.",
+        "c": "Auto-generate user manuals.",
+        "d": "Establish technical server feasibility."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 17,
+      "question": "A university is upgrading its student enrollment system. Over the winter break, the IT team must transfer all active student records from the old database to the new database. In the implementation plan, this specific database transfer process is classified under which issue?",
+      "options": {
+        "a": "Phased software rollout.",
+        "b": "User training activities.",
+        "c": "Project follow-up review.",
+        "d": "System data conversion."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 18,
+      "question": "A subscription-based video streaming service runs a batch job at midnight on the last day of each month to generate and email monthly subscription invoices to all active subscribers. What are the correct entries for the 'Trigger' and 'Source' columns in the event table for this business event?",
+      "options": {
+        "a": "Trigger: Payment is processed; Source: Payment Gateway.",
+        "b": "Trigger: System date reaches end of month; Source: System Clock.",
+        "c": "Trigger: Subscription period ends; Source: System Clock.",
+        "d": "Trigger: Subscriber requests invoice; Source: Active Subscriber."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 19,
+      "question": "A business analyst models the 'as-is' process of an insurance claim and finds that a physical document must be signed by three different managers, creating a 5-day delay. Which reason for business modeling does this highlight?",
+      "options": {
+        "a": "Communicating with technical software developers.",
+        "b": "Establishing database security boundaries.",
+        "c": "Designing the user interface for the system.",
+        "d": "Revealing improvement opportunities like bottlenecks."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 20,
+      "question": "During project startup, the team drafts a document that describes the business need, the project sponsor, and the requested functionality. What is this document?",
+      "options": {
+        "a": "Maintenance Log",
+        "b": "Feasibility Study Report",
+        "c": "System Design Specification",
+        "d": "System Request"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 21,
+      "question": "A corporate committee proposes using an advanced AI system that requires extreme computing power, but the IT department warns that they lack the hardware infrastructure and in-house programming expertise. What feasibility is at risk?",
+      "options": {
+        "a": "Schedule Feasibility",
+        "b": "Technical Feasibility",
+        "c": "Economic Feasibility",
+        "d": "Operational Feasibility"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 22,
+      "question": "A healthcare system has an association line between 'Patient' and 'MedicalHistory'. The line is labeled 'provides' with a solid triangle pointing to 'MedicalHistory'. How is this association read and applied in both directions?",
+      "options": {
+        "a": "'Patient' contains 'MedicalHistory' attributes / 'MedicalHistory' contains 'Patient' attributes.",
+        "b": "'Patient' provides 'MedicalHistory' / 'MedicalHistory' is provided by 'Patient'.",
+        "c": "'Patient' owns 'MedicalHistory' as a part / 'MedicalHistory' cannot exist without 'Patient'.",
+        "d": "'Patient' is a subclass of 'MedicalHistory' / 'MedicalHistory' is a superclass of 'Patient'."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 23,
+      "question": "You are drawing a UML class diagram that contains a generalization relationship between 'Customer' (superclass) and 'Regular Customer' (subclass). According to standard UML graphical notation, how should you draw this relationship?",
+      "options": {
+        "a": "Draw a dashed line with an arrowhead pointing towards 'Regular Customer'.",
+        "b": "Draw a solid line with an open/hollow triangle pointing to 'Customer'.",
+        "c": "Draw a solid line with a solid black diamond at the 'Customer' end.",
+        "d": "Draw a solid line with a small solid black triangle beside the line name."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 24,
+      "question": "A business analyst is choosing between predictive and adaptive SDLC for a new project. They assess the clarity of requirements, the project size and risk, and the organizational culture. These assessments are part of:",
+      "options": {
+        "a": "Choosing the right SDLC approach.",
+        "b": "Establishing a system boundary.",
+        "c": "Performing a database design specification.",
+        "d": "Creating a business use case diagram."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 25,
+      "question": "A project sponsor wants to know how the team will evaluate if the newly developed system meets the project-level goals established at the beginning. Where in the baseline is this documented?",
+      "options": {
+        "a": "High-level use cases / candidate features.",
+        "b": "Preliminary non-functional requirements.",
+        "c": "Known assumptions and constraints.",
+        "d": "Success criteria at the project level."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 26,
+      "question": "A company builds a portal using a traditional sequential approach. During final testing, they find that a critical database-scaling assumption is wrong, forcing a costly redo. How does UP mitigate this risk?",
+      "options": {
+        "a": "By completely eliminating the testing phase in the final stage.",
+        "b": "By addressing architectural risks early through iterative builds.",
+        "c": "By forcing developers to write code before analyzing requirements.",
+        "d": "By removing the database layer from initial development."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 27,
+      "question": "Immediately after the Business Requirements Document (BRD) is approved, a developer asks the business analyst to add a small feature to the report generator. How should the analyst respond based on the concept of 'setting a baseline' for development?",
+      "options": {
+        "a": "Refuse the change because all analysis documentation is frozen as the baseline copy.",
+        "b": "Tell the developer to perform white-box unit testing on the proposed change first.",
+        "c": "Postpone the decision until the client completes User Acceptance Testing (UAT).",
+        "d": "Accept the change and update the document, since development has not started yet."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 28,
+      "question": "A Business Analyst spends an entire afternoon sitting next to a warehouse operator, carefully taking notes on how she manually registers returned items. The BA discovers three unstated workarounds that the operator forgot to mention in interviews. Which requirements elicitation technique is the BA applying?",
+      "options": {
+        "a": "Rapid Software Prototyping",
+        "b": "Observational Study",
+        "c": "Legacy Document Analysis",
+        "d": "Joint Application Design (JAD)"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 29,
+      "question": "In a vehicle rental system, 'Truck', 'Car', and 'Tractor' are modeled as specialized subclasses of a 'MotorVehicle' superclass. If 'MotorVehicle' contains the attribute 'vehicleID' and the method 'calculateValue()', what is the behavior of 'Car' objects regarding these elements?",
+      "options": {
+        "a": "'Car' objects are entirely independent and inherit nothing from the 'MotorVehicle' superclass.",
+        "b": "'Car' objects automatically inherit both 'vehicleID' and 'calculateValue()' from 'MotorVehicle'.",
+        "c": "'Car' objects inherit only 'vehicleID' but must define their own 'calculateValue()' method.",
+        "d": "'Car' objects can only access 'vehicleID' if they establish a separate association line."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 30,
+      "question": "An analyst is evaluating a proposal for a new CRM system. She calculates that the system will cost $80,000 to build but will generate $25,000 in monthly administrative savings. What specific feasibility is she assessing?",
+      "options": {
+        "a": "Operational Feasibility",
+        "b": "Economic Feasibility",
+        "c": "Schedule Feasibility",
+        "d": "Technical Feasibility"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 31,
+      "question": "A 'Sales Clerk' takes a customer's phone order and enters it into the system. How is the 'Sales Clerk' classified in business use case terms?",
+      "options": {
+        "a": "Business Worker.",
+        "b": "System Boundary.",
+        "c": "Primary Business Actor.",
+        "d": "External Business Actor."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 32,
+      "question": "A BA draws a diagram using boxes, swimlanes, and decision diamonds to represent the workflow of how an invoice is approved across different departments, omitting system code details. In the context of the BA's toolkit, what is this diagram considered?",
+      "options": {
+        "a": "An information elicitation technique",
+        "b": "A software development methodology",
+        "c": "A simplified system model",
+        "d": "A computer-aided engineering tool"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 33,
+      "question": "A developer has just finished implementing the 'Add to Cart' use-case scenario in a retail web application during the Construction phase. What type of testing should be performed immediately to verify compliance with the requirements?",
+      "options": {
+        "a": "User acceptance tests conducted and supervised exclusively by the retail store customers.",
+        "b": "Exploratory usability testing to find visual interface design layout improvements.",
+        "c": "Requirements-based (black-box) tests to verify compliance with the system use-case description.",
+        "d": "Structural glassbox testing to verify the internal database execution paths of the code."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 34,
+      "question": "A system has been deployed for six months. The team is now monitoring server performance, fixing software bugs, and applying security patches. Which SDLC phase are they in?",
+      "options": {
+        "a": "Support Phase",
+        "b": "Analysis Phase",
+        "c": "Design Phase",
+        "d": "Implementation Phase"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 35,
+      "question": "An inventory system automatically triggers an email notification to a supplier when stock levels drop below 10. The supplier does not log into the system but receives the email. Is the supplier an actor?",
+      "options": {
+        "a": "Yes, but only if they trigger the stock reduction use case themselves.",
+        "b": "Yes, they are an actor because they interact with system output.",
+        "c": "No, external systems or third-party organizations are not actors.",
+        "d": "No, only human users who log in can be considered actors."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 36,
+      "question": "A grocery store manager receives a weekly automated report summarizing total sales, top-selling items, and current inventory shortages. He uses this report to make tactical decisions regarding replenishment orders. What level of information system is the manager utilizing?",
+      "options": {
+        "a": "Transaction Processing System (TPS)",
+        "b": "Executive Support System (ESS)",
+        "c": "Customer Relationship Management (CRM)",
+        "d": "Management Information System (MIS)"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 37,
+      "question": "A marketing department wants to track customer complaints, past purchases, social media interactions, and support tickets to personalize upcoming promotional email campaigns. Which type of information system is best suited for this task?",
+      "options": {
+        "a": "Enterprise Resource Planning (ERP)",
+        "b": "Transaction Processing System (TPS)",
+        "c": "Customer Relationship Management (CRM)",
+        "d": "Supply Chain Management (SCM)"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 38,
+      "question": "The software is fully developed and tested. The project team is now converting the database, training end-users, and officially deploying the system to live production servers. Which UP phase are they in?",
+      "options": {
+        "a": "Construction phase",
+        "b": "Transition phase",
+        "c": "Inception phase",
+        "d": "Elaboration phase"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 39,
+      "question": "During a course registration use case, if the course is full, the system branches off to let the student join the waitlist, which is a successful alternative outcome. What type of flow is this?",
+      "options": {
+        "a": "A normal flow step that always executes for all users.",
+        "b": "An exception flow that terminates the use case in failure.",
+        "c": "An alternate flow that branches from the normal flow.",
+        "d": "A precondition that must be met before registration begins."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 40,
+      "question": "A company wants to build a new CRM system. Before writing any code or modeling database tables, they need to answer the question: 'Why should we build this system?' and evaluate its feasibility. Which SDLC phase are they in?",
+      "options": {
+        "a": "Analysis Phase",
+        "b": "Implementation Phase",
+        "c": "Design Phase",
+        "d": "Planning Phase"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 41,
+      "question": "An analyst is drawing an activity diagram and wants to show which specific department (e.g., Sales, Warehouse, Finance) is responsible for each activity. Which notation should they use?",
+      "options": {
+        "a": "Swimlanes.",
+        "b": "Fork and Join bars.",
+        "c": "Initial and Final nodes.",
+        "d": "Decision diamonds."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 42,
+      "question": "Which of the following represents the correct sequence of key activities in the Initiation phase?",
+      "options": {
+        "a": "Define scope → Construct database → Model workflows → Create training materials.",
+        "b": "Identify need → Define system request → Assess feasibility → Form team and obtain approval.",
+        "c": "Create use case diagram → Write class logic → Deploy system → Log change requests.",
+        "d": "Design database → Write code → Test code → Support users."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 43,
+      "question": "During the Construction phase, a developer implements the 'View Invoice' use-case. The QA analyst is preparing requirements-based black-box tests. What is the main purpose of performing these black-box tests at this stage?",
+      "options": {
+        "a": "To verify compliance of the implementation with the requirements.",
+        "b": "To perform structured database schema validation before rollout.",
+        "c": "To evaluate the execution speed of the internal code functions.",
+        "d": "To rewrite the original system use-case descriptions in the BRD."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 44,
+      "question": "In an online flight reservation system, a passenger searches for available flights and selects a seat. The system then displays a booking confirmation screen. Which of the following represents the business event that occurred in this scenario?",
+      "options": {
+        "a": "The reservation database updates the seat status to 'Unavailable'.",
+        "b": "The passenger submits a flight reservation request to the system.",
+        "c": "The passenger views the seat map on the booking confirmation screen.",
+        "d": "The system searches for flights that match the passenger's search criteria."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 45,
+      "question": "Three months after successfully deploying a school management system, the project team schedules a follow-up review. What is the primary purpose of conducting this post-implementation follow-up?",
+      "options": {
+        "a": "To design the initial test cases that will be used during the Construction phase.",
+        "b": "To ensure successful execution and verify that the project is achieving high-level goals.",
+        "c": "To freeze all requirements and establish the project's baseline for the very first time.",
+        "d": "To allow technical testers to perform system tests before product acceptance occurs."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 46,
+      "question": "An analyst is modeling a motor fleet system and needs to define an attribute that uniquely identifies each physical 'Truck' object in the database. What type of attribute is required for this role?",
+      "options": {
+        "a": "Specialization attribute",
+        "b": "Identifier (key)",
+        "c": "Rolename",
+        "d": "Meta-attribute"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 47,
+      "question": "A corporate office adopts a new software tool for submitting travel expense reports. However, employees continue to email Excel sheets to HR because they are unaware of the submission guidelines and deadlines. Which core component of this information system is failing?",
+      "options": {
+        "a": "Software component",
+        "b": "Procedures component",
+        "c": "Hardware component",
+        "d": "Data component"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 48,
+      "question": "In a school portal, there are three business events: 'Student requests enrollment', 'Registration period opens', and 'Instructor submits grades'. The analyst decides to create a single use case named 'Manage School Activities' to handle all three. Why does this decision violate the standard rules of the Initiation Phase?",
+      "options": {
+        "a": "Because it violates the 1:1 rule where every business event must correspond to exactly one use case.",
+        "b": "Because 'Manage School Activities' is not named using a verb-noun phrase format.",
+        "c": "Because students and instructors cannot participate in the same UML use case diagram.",
+        "d": "Because temporal events like 'Registration period opens' cannot be mapped to use cases."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 49,
+      "question": "An analyst is explaining the difference between business modeling and systems analysis. What is the key distinction?",
+      "options": {
+        "a": "Business modeling asks 'how does the system support that work?', while systems analysis asks 'how does the business work?'.",
+        "b": "Business modeling asks 'how does the business work?', while systems analysis asks 'how will the system support that work?'.",
+        "c": "Business modeling is performed in the Support phase, while systems analysis is in the Planning phase.",
+        "d": "Business modeling uses programming language, while systems analysis uses non-technical language."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 50,
+      "question": "A retail company wants to model how it fulfills orders end-to-end, involving the sales department, warehouse, and shipping. This end-to-end sequence of activities is called:",
+      "options": {
+        "a": "A Business Worker.",
+        "b": "A Business Actor.",
+        "c": "A Business Event.",
+        "d": "A Business Process."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 51,
+      "question": "A team needs to evaluate whether a proposed project is technically, economically, and organizationally viable. What activity should they perform?",
+      "options": {
+        "a": "Write class program logic.",
+        "b": "Create an activity diagram.",
+        "c": "Design the database schema.",
+        "d": "Perform a Feasibility Analysis."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 52,
+      "question": "A software team has completed the implementation of all use-case scenarios for a logistics portal and is preparing for the final customer acceptance phase. Who should perform system tests at this stage, and when do they occur?",
+      "options": {
+        "a": "Business analysts perform these tests during the initial Discovery phase walkthroughs.",
+        "b": "End-users perform and supervise these tests during the project Closeout phase.",
+        "c": "The client's senior management conducts these tests during the Initiation phase.",
+        "d": "Developers or technical testers perform them before acceptance of the product."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 53,
+      "question": "A sports club tournament requires that: 'Each team must play a minimum of 3 games and a maximum of 5 games in the group stage.' What is the correct UML multiplicity to display on the Game side of the 'plays' association line?",
+      "options": {
+        "a": "3..5 (Specific range)",
+        "b": "1..3 (One to three)",
+        "c": "* (Unlimited number)",
+        "d": "3..* (Three or more)"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 54,
+      "question": "A project has been divided into short, repeated development blocks called iterations. Within each block, the team analyzes, designs, builds, and reviews. This is characteristic of:",
+      "options": {
+        "a": "A predictive SDLC approach.",
+        "b": "A sequential planning model.",
+        "c": "The traditional Waterfall model.",
+        "d": "An adaptive SDLC approach."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 55,
+      "question": "A hospital's new registration system went live yesterday. The hospital board wants to verify if the $500,000 investment has successfully reduced patient wait times by 20%. When should the project team schedule the post-implementation follow-up to verify this high-level goal?",
+      "options": {
+        "a": "During the Construction phase, as individual code components are written.",
+        "b": "Within a reasonable time frame after implementation has been completed.",
+        "c": "Immediately during the Closeout phase, before the system goes live.",
+        "d": "During the Discovery phase, while drafting the initial contract requirements."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 56,
+      "question": "A help-desk log shows several 'Change Requests' and 'System Enhancements' being tracked. These documents are deliverables of which SDLC phase?",
+      "options": {
+        "a": "Design Phase",
+        "b": "Analysis Phase",
+        "c": "Implementation Phase",
+        "d": "Support Phase"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 57,
+      "question": "A project manager in an agile development team suggests skipping the discovery and scoping of system use cases to start designing the user interface and database schema immediately. According to the Unified Process, why is this suggestion problematic for the Initiation (Inception) Phase?",
+      "options": {
+        "a": "Because the database schema must be fully normalized before any system use case can be scoped.",
+        "b": "Because user interfaces must be coded in the Elaboration Phase rather than the Inception Phase.",
+        "c": "Because the Initiation Phase must result in a fully dressed use case description for every single requirement.",
+        "d": "Because scoping use cases provides the essential foundation of system requirements before design."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 58,
+      "question": "An IT team is defining the system architecture, designing the database schema, and drafting user interface mockups. Which SDLC phase does this represent?",
+      "options": {
+        "a": "Analysis Phase",
+        "b": "Implementation Phase",
+        "c": "Design Phase",
+        "d": "Support Phase"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 59,
+      "question": "A government agency is preparing a contract with an external IT contractor to build a tax portal. The agency wants to prevent disputes regarding the quality of the delivered software. What action should the agency take during the Discovery phase to establish clear quality standards in the contract?",
+      "options": {
+        "a": "Specify detailed test cases up front to add measurable quality requirements.",
+        "b": "Propose that the developers perform glassbox unit testing after delivery.",
+        "c": "Execute user acceptance testing on a mock database system during discovery.",
+        "d": "Finalize the user manuals and train all tax officers before development starts."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 60,
+      "question": "A manufacturing company wants to integrate all of its core business operations — including financial accounting, raw materials inventory, and production scheduling — into a single, unified database and software suite. Which type of enterprise system should the company implement?",
+      "options": {
+        "a": "Human Resource Management System (HR)",
+        "b": "Enterprise Resource Planning (ERP)",
+        "c": "Supply Chain Management (SCM)",
+        "d": "Customer Relationship Management (CRM)"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 61,
+      "question": "A project manager is leading a system integration project for a highly regulated government agency. The client contract demands a fixed scope, formal change control, and extensive documentation up front. This situation calls for:",
+      "options": {
+        "a": "An adaptive approach that encourages frequent requirement changes.",
+        "b": "An adaptive SDLC approach focusing on working software over documentation.",
+        "c": "An agile SDLC approach utilizing weekly iterative releases.",
+        "d": "A predictive SDLC approach focusing on up-front planning and tight control."
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 62,
+      "question": "A system analyst is currently working with a retail client. They have listed all business events and defined the system boundary, but the project sponsor is eager to sign off on the system's scope. What key output of the Initiation Phase must the analyst validate with the sponsor to formally agree on the system's scope?",
+      "options": {
+        "a": "The validated System Use Case Model with descriptions.",
+        "b": "The complete set of executable source code and test cases.",
+        "c": "The detailed software architecture and deployment diagrams.",
+        "d": "The physical database schema and user interface storyboards."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 63,
+      "question": "On a use-case diagram, an analyst notices that a use case named 'Generate Monthly Report' has no connected actors. What does this indicate?",
+      "options": {
+        "a": "A system process that runs completely internally with no external value.",
+        "b": "A correct representation of an automated, batch-mode system process.",
+        "c": "A modeling error; every use case must have at least one actor.",
+        "d": "An included usecase that does not require any actor interaction."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 64,
+      "question": "In a student portal project, the team has modeled the use-case diagram but faces conflicting descriptions of how a 'Drop Course' scenario should behave. According to the iterative Discovery Phase cycle, what is their most appropriate next step?",
+      "options": {
+        "a": "Elicit requirements again and review them with key stakeholders.",
+        "b": "Delete the use case from the diagram to maintain stability.",
+        "c": "Implement a temporary drop-course function in the database.",
+        "d": "Proceed immediately to designing the class domain model."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 65,
+      "question": "You are modeling a software system for a publishing company where 'Book' consists of 'Chapters'. A chapter cannot belong to more than one book simultaneously, and if a Book is deleted, its Chapters are deleted as well. Why is this relationship Composition rather than Aggregation?",
+      "options": {
+        "a": "Because chapters are represented as attributes of the Author class.",
+        "b": "Because chapters are created before the book exists in the system.",
+        "c": "Because the whole owns the part entirely and the part cannot belong to another whole.",
+        "d": "Because a book can exist without having any chapters inside it."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 66,
+      "question": "A team is building a mission-critical banking ledger system. The project has clear, stable requirements and must pass strict regulatory audits before deployment. Which approach and emphasis is most appropriate?",
+      "options": {
+        "a": "Predictive, emphasizing up-front planning and formal sign-offs.",
+        "b": "Adaptive, emphasizing short iterations and frequent prototype feedback.",
+        "c": "Adaptive, emphasizing minimal documentation and daily code releases.",
+        "d": "Predictive, emphasizing continuous changes and flexible scope."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 67,
+      "question": "A retail chain has noticed a drop in sales and wants to explore whether a mobile loyalty app can solve this. They are in the very first phase of the project, turning this business need into an approved project. Which phase is this?",
+      "options": {
+        "a": "Analysis Phase",
+        "b": "Design Phase",
+        "c": "Initiation Phase",
+        "d": "Support Phase"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 68,
+      "question": "An insurance company is outsourcing the development of a claims processing system. The project sponsor wants to ensure that the outsourced team delivers a high-quality product. How can the business analyst use testing activities during the Discovery phase to secure this in the development contract?",
+      "options": {
+        "a": "By letting the developers perform white-box testing of the requirements document.",
+        "b": "By running full system tests on the early wireframes before the contract is signed.",
+        "c": "By specifying tests up front to add measurable quality requirements to the contract.",
+        "d": "By requiring the end-users to complete User Acceptance Testing before signing."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 69,
+      "question": "A financial firm implements an automated transaction logging system that records every user's access, IP address, and transaction amount specifically to comply with new federal anti-money laundering regulations. Which business reason best explains this system's implementation?",
+      "options": {
+        "a": "Achieving Competitive Advantage",
+        "b": "Maximizing Efficiency & Automation",
+        "c": "Optimizing Customer Service",
+        "d": "Ensuring Compliance & Control"
+      },
+      "correctAnswer": "d"
+    },
+    {
+      "id": 70,
+      "question": "A hospital's patient monitoring system tracks a patient's heart rate. If the heart rate exceeds 140 beats per minute, the system sounds an alarm at the central nurse station and sends a text alert to the on-duty physician. Which of the following is the correct event classification and trigger condition for this scenario?",
+      "options": {
+        "a": "State event triggered by the nurse turning on the patient monitoring machine.",
+        "b": "External event triggered by the physician request to view heart rate history.",
+        "c": "State event triggered by the condition 'Heart rate > 140 beats per minute'.",
+        "d": "Temporal event triggered by the passage of a 10-minute monitoring interval."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 71,
+      "question": "A steering committee receives a document summarizing technical, economic, and organizational findings. This document is known as:",
+      "options": {
+        "a": "A Feasibility Study Report.",
+        "b": "A System Request.",
+        "c": "A Project Charter.",
+        "d": "A Business Case."
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 72,
+      "question": "A BA is modeling how a bank account's status changes dynamically from 'Active' to 'Overdrawn' and then to 'Suspended' based on user deposits and withdrawals over time. Which category of system model is most appropriate for this task?",
+      "options": {
+        "a": "System architecture model",
+        "b": "Behavioral system model",
+        "c": "Data-relationship model",
+        "d": "Static structural model"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 73,
+      "question": "A project team enters the Final Verification and Validation phase of a critical healthcare system. Which SDLC discipline is primarily active and focused on during this phase?",
+      "options": {
+        "a": "Implementation discipline",
+        "b": "Requirements discipline",
+        "c": "Testing discipline",
+        "d": "Design discipline"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 74,
+      "question": "A developer is confused about the difference between 'Business Use Cases' and 'System Use Cases.' How should a systems analyst explain it?",
+      "options": {
+        "a": "There is no difference; they are identical terms for the same UML diagram.",
+        "b": "Business use cases model the business itself, while system use cases describe how an actor interacts with the information system itself.",
+        "c": "System use cases model the entire business, while business use cases describe code functions.",
+        "d": "Business use cases focus strictly on programming code, while system use cases focus on manual business processes."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 75,
+      "question": "A developer is implementing an 'Issue Refund' feature. They need to find the exact authorization limit policy for refunds but don't want to dig through use-case flows. Where should they look?",
+      "options": {
+        "a": "The normal flow steps of the refund use case.",
+        "b": "The brief use-case descriptions of accounting features.",
+        "c": "A separate, traceable business rules glossary.",
+        "d": "The actor catalog for registrar and librarian roles."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 76,
+      "question": "In Rocky Mountain Outfitters (RMO), the requirements state: 'A customer can place zero or more orders, but each order must be placed by exactly one customer.' What is the correct multiplicity on the Customer end of the 'places' association line?",
+      "options": {
+        "a": "1 (Exactly one)",
+        "b": "1..* (One or more)",
+        "c": "0..* (Zero or more)",
+        "d": "0..1 (Zero or one)"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 77,
+      "question": "A software architect creates a 'System Design Specification' and 'Interface and Class Design Documents.' These deliverables belong to which phase?",
+      "options": {
+        "a": "Design Phase",
+        "b": "Analysis Phase",
+        "c": "Implementation Phase",
+        "d": "Support Phase"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "id": 78,
+      "question": "A university portal automatically opens course registration at exactly 8:00 AM on July 1st. Students receive a notification that they can now log in and select their classes. In a UML use case diagram for this system, how should the trigger of this event be represented?",
+      "options": {
+        "a": "As a primary business actor named 'Registrar' connected to the 'Open Registration' use case.",
+        "b": "As a primary human actor named 'Student' connected to the 'Open Registration' use case.",
+        "c": "As an actor named 'System Clock' or 'Time' connected to the 'Open Registration' use case.",
+        "d": "As an external receiver actor named 'Notification Service' connected to the use case."
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "id": 79,
+      "question": "In a corporate training platform, both 'Employee' and 'Manager' can view course catalogs. However, only the 'Manager' has the additional ability to assign courses to their subordinates. How should this relationship be represented in the UML use case diagram to maximize reuse?",
+      "options": {
+        "a": "Model an <<extend>> relationship from the 'Manager' actor to the 'Employee' actor.",
+        "b": "Model a generalization relationship where 'Manager' inherits from the 'Employee' actor.",
+        "c": "Model an <<include>> relationship from 'Employee' to 'Manager' to share permissions.",
+        "d": "Create separate, unconnected actors for 'Employee' and 'Manager' and duplicate all links."
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "id": 80,
+      "question": "An analyst is comparing 'Business Process' and 'Business Use Case' concepts. They want to show how a single external actor gets value from the business. What is the scope and focus of this?",
+      "options": {
+        "a": "Business Use Case, which has an internal view of the work.",
+        "b": "Business Process, which has an internal operational view.",
+        "c": "Business Process, which may span many actors and departments.",
+        "d": "Business Use Case, which is bounded by a single actor's goal."
+      },
+      "correctAnswer": "d"
+    }
+  ],
+  "answerKey": {
+    "1": "b",
+    "2": "d",
+    "3": "a",
+    "4": "c",
+    "5": "d",
+    "6": "d",
+    "7": "a",
+    "8": "d",
+    "9": "c",
+    "10": "c",
+    "11": "b",
+    "12": "a",
+    "13": "b",
+    "14": "c",
+    "15": "b",
+    "16": "b",
+    "17": "d",
+    "18": "b",
+    "19": "d",
+    "20": "d",
+    "21": "b",
+    "22": "b",
+    "23": "b",
+    "24": "a",
+    "25": "d",
+    "26": "b",
+    "27": "a",
+    "28": "b",
+    "29": "b",
+    "30": "b",
+    "31": "a",
+    "32": "c",
+    "33": "c",
+    "34": "a",
+    "35": "b",
+    "36": "d",
+    "37": "c",
+    "38": "b",
+    "39": "c",
+    "40": "d",
+    "41": "a",
+    "42": "b",
+    "43": "a",
+    "44": "b",
+    "45": "b",
+    "46": "b",
+    "47": "b",
+    "48": "a",
+    "49": "b",
+    "50": "d",
+    "51": "d",
+    "52": "d",
+    "53": "a",
+    "54": "d",
+    "55": "b",
+    "56": "d",
+    "57": "d",
+    "58": "c",
+    "59": "a",
+    "60": "b",
+    "61": "d",
+    "62": "a",
+    "63": "c",
+    "64": "a",
+    "65": "c",
+    "66": "a",
+    "67": "c",
+    "68": "c",
+    "69": "d",
+    "70": "c",
+    "71": "a",
+    "72": "b",
+    "73": "c",
+    "74": "b",
+    "75": "c",
+    "76": "a",
+    "77": "a",
+    "78": "c",
+    "79": "b",
+    "80": "d"
+  },
+  "answerSheet": [
+    {
+      "id": 1,
+      "correctAnswer": "b",
+      "correctText": "It should be added to the 'Book' subclass to keep 'Magazine' free of irrelevant attributes."
+    },
+    {
+      "id": 2,
+      "correctAnswer": "d",
+      "correctText": "Business modeling ensures we understand the context before automating."
+    },
+    {
+      "id": 3,
+      "correctAnswer": "a",
+      "correctText": "It should be modeled inside an Association Class named 'CourseEnrollment'."
+    },
+    {
+      "id": 4,
+      "correctAnswer": "c",
+      "correctText": "Support/Maintenance stage"
+    },
+    {
+      "id": 5,
+      "correctAnswer": "d",
+      "correctText": "Activity Diagram"
+    },
+    {
+      "id": 6,
+      "correctAnswer": "d",
+      "correctText": "A Business Use Case."
+    },
+    {
+      "id": 7,
+      "correctAnswer": "a",
+      "correctText": "External Receiver Actor"
+    },
+    {
+      "id": 8,
+      "correctAnswer": "d",
+      "correctText": "Negotiation and facilitation"
+    },
+    {
+      "id": 9,
+      "correctAnswer": "c",
+      "correctText": "It provided a clear comparison of current progress against original commitments."
+    },
+    {
+      "id": 10,
+      "correctAnswer": "c",
+      "correctText": "Inception Phase"
+    },
+    {
+      "id": 11,
+      "correctAnswer": "b",
+      "correctText": "The registrar is logged in and the target course is full."
+    },
+    {
+      "id": 12,
+      "correctAnswer": "a",
+      "correctText": "Predictive approach, which plans the whole project at the start."
+    },
+    {
+      "id": 13,
+      "correctAnswer": "b",
+      "correctText": "A brief use-case description summarizing the main success path."
+    },
+    {
+      "id": 14,
+      "correctAnswer": "c",
+      "correctText": "'Product' is an entity class, while 'Hanoi Warehouse' is a specific object instance."
+    },
+    {
+      "id": 15,
+      "correctAnswer": "b",
+      "correctText": "Group related use cases into functional packages based on subsystems."
+    },
+    {
+      "id": 16,
+      "correctAnswer": "b",
+      "correctText": "Reveal inefficiencies and hand-offs in a business process."
+    },
+    {
+      "id": 17,
+      "correctAnswer": "d",
+      "correctText": "System data conversion."
+    },
+    {
+      "id": 18,
+      "correctAnswer": "b",
+      "correctText": "Trigger: System date reaches end of month; Source: System Clock."
+    },
+    {
+      "id": 19,
+      "correctAnswer": "d",
+      "correctText": "Revealing improvement opportunities like bottlenecks."
+    },
+    {
+      "id": 20,
+      "correctAnswer": "d",
+      "correctText": "System Request"
+    },
+    {
+      "id": 21,
+      "correctAnswer": "b",
+      "correctText": "Technical Feasibility"
+    },
+    {
+      "id": 22,
+      "correctAnswer": "b",
+      "correctText": "'Patient' provides 'MedicalHistory' / 'MedicalHistory' is provided by 'Patient'."
+    },
+    {
+      "id": 23,
+      "correctAnswer": "b",
+      "correctText": "Draw a solid line with an open/hollow triangle pointing to 'Customer'."
+    },
+    {
+      "id": 24,
+      "correctAnswer": "a",
+      "correctText": "Choosing the right SDLC approach."
+    },
+    {
+      "id": 25,
+      "correctAnswer": "d",
+      "correctText": "Success criteria at the project level."
+    },
+    {
+      "id": 26,
+      "correctAnswer": "b",
+      "correctText": "By addressing architectural risks early through iterative builds."
+    },
+    {
+      "id": 27,
+      "correctAnswer": "a",
+      "correctText": "Refuse the change because all analysis documentation is frozen as the baseline copy."
+    },
+    {
+      "id": 28,
+      "correctAnswer": "b",
+      "correctText": "Observational Study"
+    },
+    {
+      "id": 29,
+      "correctAnswer": "b",
+      "correctText": "'Car' objects automatically inherit both 'vehicleID' and 'calculateValue()' from 'MotorVehicle'."
+    },
+    {
+      "id": 30,
+      "correctAnswer": "b",
+      "correctText": "Economic Feasibility"
+    },
+    {
+      "id": 31,
+      "correctAnswer": "a",
+      "correctText": "Business Worker."
+    },
+    {
+      "id": 32,
+      "correctAnswer": "c",
+      "correctText": "A simplified system model"
+    },
+    {
+      "id": 33,
+      "correctAnswer": "c",
+      "correctText": "Requirements-based (black-box) tests to verify compliance with the system use-case description."
+    },
+    {
+      "id": 34,
+      "correctAnswer": "a",
+      "correctText": "Support Phase"
+    },
+    {
+      "id": 35,
+      "correctAnswer": "b",
+      "correctText": "Yes, they are an actor because they interact with system output."
+    },
+    {
+      "id": 36,
+      "correctAnswer": "d",
+      "correctText": "Management Information System (MIS)"
+    },
+    {
+      "id": 37,
+      "correctAnswer": "c",
+      "correctText": "Customer Relationship Management (CRM)"
+    },
+    {
+      "id": 38,
+      "correctAnswer": "b",
+      "correctText": "Transition phase"
+    },
+    {
+      "id": 39,
+      "correctAnswer": "c",
+      "correctText": "An alternate flow that branches from the normal flow."
+    },
+    {
+      "id": 40,
+      "correctAnswer": "d",
+      "correctText": "Planning Phase"
+    },
+    {
+      "id": 41,
+      "correctAnswer": "a",
+      "correctText": "Swimlanes."
+    },
+    {
+      "id": 42,
+      "correctAnswer": "b",
+      "correctText": "Identify need → Define system request → Assess feasibility → Form team and obtain approval."
+    },
+    {
+      "id": 43,
+      "correctAnswer": "a",
+      "correctText": "To verify compliance of the implementation with the requirements."
+    },
+    {
+      "id": 44,
+      "correctAnswer": "b",
+      "correctText": "The passenger submits a flight reservation request to the system."
+    },
+    {
+      "id": 45,
+      "correctAnswer": "b",
+      "correctText": "To ensure successful execution and verify that the project is achieving high-level goals."
+    },
+    {
+      "id": 46,
+      "correctAnswer": "b",
+      "correctText": "Identifier (key)"
+    },
+    {
+      "id": 47,
+      "correctAnswer": "b",
+      "correctText": "Procedures component"
+    },
+    {
+      "id": 48,
+      "correctAnswer": "a",
+      "correctText": "Because it violates the 1:1 rule where every business event must correspond to exactly one use case."
+    },
+    {
+      "id": 49,
+      "correctAnswer": "b",
+      "correctText": "Business modeling asks 'how does the business work?', while systems analysis asks 'how will the system support that work?'."
+    },
+    {
+      "id": 50,
+      "correctAnswer": "d",
+      "correctText": "A Business Process."
+    },
+    {
+      "id": 51,
+      "correctAnswer": "d",
+      "correctText": "Perform a Feasibility Analysis."
+    },
+    {
+      "id": 52,
+      "correctAnswer": "d",
+      "correctText": "Developers or technical testers perform them before acceptance of the product."
+    },
+    {
+      "id": 53,
+      "correctAnswer": "a",
+      "correctText": "3..5 (Specific range)"
+    },
+    {
+      "id": 54,
+      "correctAnswer": "d",
+      "correctText": "An adaptive SDLC approach."
+    },
+    {
+      "id": 55,
+      "correctAnswer": "b",
+      "correctText": "Within a reasonable time frame after implementation has been completed."
+    },
+    {
+      "id": 56,
+      "correctAnswer": "d",
+      "correctText": "Support Phase"
+    },
+    {
+      "id": 57,
+      "correctAnswer": "d",
+      "correctText": "Because scoping use cases provides the essential foundation of system requirements before design."
+    },
+    {
+      "id": 58,
+      "correctAnswer": "c",
+      "correctText": "Design Phase"
+    },
+    {
+      "id": 59,
+      "correctAnswer": "a",
+      "correctText": "Specify detailed test cases up front to add measurable quality requirements."
+    },
+    {
+      "id": 60,
+      "correctAnswer": "b",
+      "correctText": "Enterprise Resource Planning (ERP)"
+    },
+    {
+      "id": 61,
+      "correctAnswer": "d",
+      "correctText": "A predictive SDLC approach focusing on up-front planning and tight control."
+    },
+    {
+      "id": 62,
+      "correctAnswer": "a",
+      "correctText": "The validated System Use Case Model with descriptions."
+    },
+    {
+      "id": 63,
+      "correctAnswer": "c",
+      "correctText": "A modeling error; every use case must have at least one actor."
+    },
+    {
+      "id": 64,
+      "correctAnswer": "a",
+      "correctText": "Elicit requirements again and review them with key stakeholders."
+    },
+    {
+      "id": 65,
+      "correctAnswer": "c",
+      "correctText": "Because the whole owns the part entirely and the part cannot belong to another whole."
+    },
+    {
+      "id": 66,
+      "correctAnswer": "a",
+      "correctText": "Predictive, emphasizing up-front planning and formal sign-offs."
+    },
+    {
+      "id": 67,
+      "correctAnswer": "c",
+      "correctText": "Initiation Phase"
+    },
+    {
+      "id": 68,
+      "correctAnswer": "c",
+      "correctText": "By specifying tests up front to add measurable quality requirements to the contract."
+    },
+    {
+      "id": 69,
+      "correctAnswer": "d",
+      "correctText": "Ensuring Compliance & Control"
+    },
+    {
+      "id": 70,
+      "correctAnswer": "c",
+      "correctText": "State event triggered by the condition 'Heart rate > 140 beats per minute'."
+    },
+    {
+      "id": 71,
+      "correctAnswer": "a",
+      "correctText": "A Feasibility Study Report."
+    },
+    {
+      "id": 72,
+      "correctAnswer": "b",
+      "correctText": "Behavioral system model"
+    },
+    {
+      "id": 73,
+      "correctAnswer": "c",
+      "correctText": "Testing discipline"
+    },
+    {
+      "id": 74,
+      "correctAnswer": "b",
+      "correctText": "Business use cases model the business itself, while system use cases describe how an actor interacts with the information system itself."
+    },
+    {
+      "id": 75,
+      "correctAnswer": "c",
+      "correctText": "A separate, traceable business rules glossary."
+    },
+    {
+      "id": 76,
+      "correctAnswer": "a",
+      "correctText": "1 (Exactly one)"
+    },
+    {
+      "id": 77,
+      "correctAnswer": "a",
+      "correctText": "Design Phase"
+    },
+    {
+      "id": 78,
+      "correctAnswer": "c",
+      "correctText": "As an actor named 'System Clock' or 'Time' connected to the 'Open Registration' use case."
+    },
+    {
+      "id": 79,
+      "correctAnswer": "b",
+      "correctText": "Model a generalization relationship where 'Manager' inherits from the 'Employee' actor."
+    },
+    {
+      "id": 80,
+      "correctAnswer": "d",
+      "correctText": "Business Use Case, which is bounded by a single actor's goal."
+    }
+  ]
+}
